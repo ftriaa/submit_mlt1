@@ -178,7 +178,7 @@ Distribusi penjualan menunjukkan data yang skew ke kanan, di mana sebagian besar
 
 ### Data Preparation
 
-**1. Cleaning Data** 
+**1. Cleaning Data**  
 Pada tahap ini, dilakukan beberapa proses untuk merapikan dan menyiapkan dataset sebelum dianalisis lebih lanjut. Pertama, perintah superstore.dropna(axis=0, inplace=True) digunakan untuk menghapus seluruh baris (axis=0) yang memiliki nilai kosong (missing values) di dalam dataset. Dengan menambahkan inplace=True, perubahan ini langsung diterapkan pada dataset tanpa perlu membuat salinan baru. Setelah itu, dilakukan pengecekan duplikasi data menggunakan superstore.duplicated().any(), yang bertujuan untuk memastikan apakah ada baris data yang sama persis. Jika hasilnya False, berarti tidak ada data duplikat; namun jika True, maka terdapat duplikasi yang perlu ditangani. Selanjutnya, kolom-kolom yang tidak relevan untuk analisis, yaitu Row ID, Order ID, Customer ID, dan Product ID, dihapus dari dataset menggunakan superstore.drop(columns=[...]). Penghapusan ini bertujuan untuk menyederhanakan dataset dan mengurangi kolom yang tidak berkontribusi langsung terhadap analisis bisnis. Terakhir, dataset yang sudah dibersihkan disalin ke dalam variabel baru superstore_raw menggunakan superstore.copy(). Hal ini bertujuan untuk menyimpan versi mentah dataset setelah cleaning, sehingga jika dibutuhkan, data asli yang sudah dibersihkan tetap tersedia tanpa harus mengulang proses dari awal.
 
 **2. Transformasi Logaritma pada Penjualan**  
@@ -239,9 +239,7 @@ $$ RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2} $$
 **4. R-squared (R²)**  
 R² mengukur proporsi variansi dari data target yang bisa dijelaskan oleh model. Nilai mendekati 1 menunjukkan bahwa model dapat menjelaskan variabilitas dengan baik.
 
-$$
-R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
-$$
+$$ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2} $$
 
 
 ### Hasil evaluasi dari keempat model yang digunakan ditampilkan dalam tabel berikut:
