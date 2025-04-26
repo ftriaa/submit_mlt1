@@ -50,6 +50,11 @@ Dataset **Sales Forecasting** oleh **Rohit Sahoo** merupakan kumpulan data yang 
 - **Sales**: Total nilai penjualan produk (target peramalan).
 - **Postal Code**: Kode pos alamat pengiriman.
 
+![Screenshot 2025-04-26 090810](https://github.com/user-attachments/assets/bda80630-a160-4061-aa08-cfdbab98a91d)
+
+Berdasarkan output df.info() yang ditampilkan, dataset ini memiliki 9.800 baris data dan terdiri dari 18 kolom. Setiap kolom menunjukkan berbagai informasi terkait transaksi, seperti Row ID, Order ID, Order Date, Ship Date, Customer ID, Product ID, hingga Sales. Hampir seluruh kolom memiliki data lengkap (non-null), kecuali kolom Postal Code yang memiliki sedikit missing value, yaitu sebanyak 11 data kosong dari total 9.800 entri. Tipe data dalam dataset ini terdiri dari tiga jenis: int64 untuk data numerik bulat (contohnya Row ID), float64 untuk data numerik desimal (contohnya Postal Code dan Sales), serta object untuk data bertipe teks atau kategori (seperti Customer Name, City, dan Product Name). Selain itu, ukuran memori yang digunakan oleh dataset ini adalah sekitar 1.3 MB. Secara umum, dataset ini sudah cukup rapi, namun untuk analisis lebih lanjut, diperlukan beberapa tahap persiapan data seperti mengubah kolom tanggal (Order Date dan Ship Date) menjadi format datetime, memeriksa kemungkinan duplikat data, serta mempertimbangkan penanganan nilai kosong pada kolom Postal Code.
+
+
 ### Exploratory Data Analysis (EDA)
 1. **Descriptive Statistics Overview**
 
@@ -64,131 +69,134 @@ Dataset **Sales Forecasting** oleh **Rohit Sahoo** merupakan kumpulan data yang 
 | 75%       | 90008.000000  | 210.392000    |
 | Max       | 99301.000000  | 22638.480000  |
 
-> **Catatan:** Nilai `Sales` menunjukkan distribusi yang sangat tidak merata (*right-skewed*), di mana rata-rata lebih tinggi dari median. Ini bisa menunjukkan adanya **outlier** (transaksi dengan nilai sangat besar). Transformasi logaritma dapat dipertimbangkan untuk menstabilkan varians data.
+**Catatan:** Nilai `Sales` menunjukkan distribusi yang sangat tidak merata (*right-skewed*), di mana rata-rata lebih tinggi dari median. Ini bisa menunjukkan adanya **outlier** (transaksi dengan nilai sangat besar). Transformasi logaritma dapat dipertimbangkan untuk menstabilkan varians data.
 
 
 2. **Sales Distribution Overview**
 
-![Sales by Category](https://drive.google.com/uc?export=view&id=1bWgs2pAODu5nG-wjEwk2_Ka1xQvz375E)
+![category](https://github.com/user-attachments/assets/bf471ebc-b0c1-4936-96d8-8e71a1b874fc)
 
->Grafik pie ini menggambarkan distribusi penjualan berdasarkan kategori utama. Dari visualisasi terlihat bahwa kategori **Technology** memberikan kontribusi penjualan terbesar sebesar **36,7%**, diikuti oleh **Furniture** dengan **32,1%**, dan **Office Supplies** sebesar **31,2%**. Perbedaan antar kategori tidak terlalu mencolok, namun tetap terlihat bahwa produk-produk teknologi memiliki peran dominan dalam total penjualan. 
 
-![Penjualan Sub-Kategori](https://drive.google.com/uc?export=view&id=10jjNMgIDXDNxQhK_8AScNy0RLgBmiUlF)
+Grafik pie ini menggambarkan distribusi penjualan berdasarkan kategori utama. Dari visualisasi terlihat bahwa kategori **Technology** memberikan kontribusi penjualan terbesar sebesar **36,7%**, diikuti oleh **Furniture** dengan **32,1%**, dan **Office Supplies** sebesar **31,2%**. Perbedaan antar kategori tidak terlalu mencolok, namun tetap terlihat bahwa produk-produk teknologi memiliki peran dominan dalam total penjualan. 
 
->Grafik ini menampilkan sub-kategori dengan total penjualan tertinggi. Sub-kategori Phones mencatat penjualan sebesar USD 326.488, disusul oleh Chairs dengan USD 322.108. Sub-kategori lain seperti Storage, Tables, dan Binders mengikuti di posisi berikutnya. Mayoritas sub-kategori teratas berasal dari kategori Technology dan Furniture, yang konsisten dengan distribusi penjualan pada grafik pie sebelumnya.
+![sub_category](https://github.com/user-attachments/assets/6ef16baa-5f12-48e4-a9f7-73a2047e440d)
 
-![Penjualan Produk Tertinggi](https://drive.google.com/uc?export=view&id=1cqzn_regfkGdec0Jsn9xJ3u0JY0ehD7C)
+Grafik ini menampilkan sub-kategori dengan total penjualan tertinggi. Sub-kategori Phones mencatat penjualan sebesar USD 326.488, disusul oleh Chairs dengan USD 322.108. Sub-kategori lain seperti Storage, Tables, dan Binders mengikuti di posisi berikutnya. Mayoritas sub-kategori teratas berasal dari kategori Technology dan Furniture, yang konsisten dengan distribusi penjualan pada grafik pie sebelumnya.
 
->Grafik batang ini menampilkan 10 produk dengan total penjualan tertinggi secara individu. Produk dengan performa penjualan paling tinggi adalah Canon imageCLASS 2200 Advanced Copier, yang berhasil mencatatkan penjualan lebih dari 60.000 USD. Di bawahnya, terdapat sejumlah produk perkantoran lainnya seperti Binding Machines, Cisco Video System, dan HP Printers. 
+![product](https://github.com/user-attachments/assets/820f1994-7ebd-4452-80cf-ab1b0328dd06)
+
+Grafik batang ini menampilkan 10 produk dengan total penjualan tertinggi secara individu. Produk dengan performa penjualan paling tinggi adalah Canon imageCLASS 2200 Advanced Copier, yang berhasil mencatatkan penjualan lebih dari 60.000 USD. Di bawahnya, terdapat sejumlah produk perkantoran lainnya seperti Binding Machines, Cisco Video System, dan HP Printers. 
 
 
 3. **Sales by Geography** 
 
-![Sales by region](https://drive.google.com/uc?export=view&id=1gwh0YHIi6Owg1_EYpWYpe18wPqIf709B)
+![region](https://github.com/user-attachments/assets/97e55194-b87b-4a53-a70f-ec5caa367335)
 
->Analisis geografis terhadap total penjualan mengungkap bahwa wilayah West menyumbang porsi penjualan terbesar secara regional, yaitu sebesar 31.5%, diikuti oleh East dengan 29.3%. Wilayah Central dan South tertinggal dengan masing-masing 21.9% dan 17.3%.
+Analisis geografis terhadap total penjualan mengungkap bahwa wilayah West menyumbang porsi penjualan terbesar secara regional, yaitu sebesar 31.5%, diikuti oleh East dengan 29.3%. Wilayah Central dan South tertinggal dengan masing-masing 21.9% dan 17.3%.
 
-![Sales by State](https://drive.google.com/uc?export=view&id=1rH3g9vP7KMk-dtJbo4eGKTI7MLnjgfzF)
+![state](https://github.com/user-attachments/assets/b2e8fa95-2c10-4761-8c62-baa69894bf57)
 
->Jika dilihat lebih mendetail berdasarkan negara bagian, California mendominasi dengan kontribusi sebesar 28.6% dari total penjualan di antara 10 negara bagian teratas, disusul oleh New York (19.6%) dan Texas (10.8%).
+Jika dilihat lebih mendetail berdasarkan negara bagian, California mendominasi dengan kontribusi sebesar 28.6% dari total penjualan di antara 10 negara bagian teratas, disusul oleh New York (19.6%) dan Texas (10.8%).
 
-![Sales by City](https://drive.google.com/uc?export=view&id=1ZPwMjAgLCQiOTQx1mQZbVJfsfy3Y6wW6)
+![city](https://github.com/user-attachments/assets/bd8cf3a0-8290-49e2-8ea9-fc0756bd8acb)
 
->Sementara itu, pada tingkat kota, New York City memimpin dengan pangsa penjualan sebesar 25.1%, diikuti oleh Los Angeles (17.2%) dan Seattle (11.5%). Secara keseluruhan, pola ini menunjukkan bahwa penjualan paling kuat terkonsentrasi di wilayah pesisir seperti California dan New York, yang juga merupakan pusat ekonomi besar di Amerika Serikat.
+Sementara itu, pada tingkat kota, New York City memimpin dengan pangsa penjualan sebesar 25.1%, diikuti oleh Los Angeles (17.2%) dan Seattle (11.5%). Secara keseluruhan, pola ini menunjukkan bahwa penjualan paling kuat terkonsentrasi di wilayah pesisir seperti California dan New York, yang juga merupakan pusat ekonomi besar di Amerika Serikat.
 
 
 4. **Sales by Customer Segment** 
 
-![Sales by Segment](https://drive.google.com/uc?export=view&id=1tfIJPyCpgRV5TBhPwaE33grFILAvFnPV)
+![segment](https://github.com/user-attachments/assets/928a7349-fa9a-49b2-9723-f4f1ac79d2c1)
 
->Distribusi penjualan berdasarkan segmen pelanggan menunjukkan bahwa segmen Consumer merupakan penyumbang terbesar dengan 50.9% dari total penjualan. Segmen Corporate berada di posisi kedua dengan kontribusi sebesar 30.3%, sementara Home Office menyumbang 18.8%. Temuan ini mengindikasikan bahwa pelanggan individu atau konsumen umum menjadi pasar utama dalam penjualan produk, diikuti oleh segmen bisnis besar dan kantor rumahan.
+Distribusi penjualan berdasarkan segmen pelanggan menunjukkan bahwa segmen Consumer merupakan penyumbang terbesar dengan 50.9% dari total penjualan. Segmen Corporate berada di posisi kedua dengan kontribusi sebesar 30.3%, sementara Home Office menyumbang 18.8%. Temuan ini mengindikasikan bahwa pelanggan individu atau konsumen umum menjadi pasar utama dalam penjualan produk, diikuti oleh segmen bisnis besar dan kantor rumahan.
 
 
 5. **Top 10 Customers by Sales** 
 
-![Customers by State](https://drive.google.com/uc?export=view&id=1kffO_1I9qeeb3Mb2WzGtKKr1DxFRAEX8)
+![customers](https://github.com/user-attachments/assets/6a14e384-3bd4-4597-8781-fecfbd7e404f)
 
->Daftar pelanggan dengan kontribusi penjualan tertinggi menunjukkan bahwa Sean Miller merupakan pelanggan paling bernilai, dengan total pembelian mencapai lebih dari USD 25.000. Diikuti oleh Tamara Chand dengan hampir USD 19.000 penjualan, serta beberapa nama lain seperti Raymond Buch, Tom Ashbrook, dan Adrian Barton, yang masing-masing menyumbang lebih dari USD 14.000. Pola ini menunjukkan bahwa terdapat kelompok pelanggan kunci dengan kontribusi besar terhadap pendapatan. Pelanggan-pelanggan ini bisa menjadi fokus program loyalitas, penawaran eksklusif, atau pendekatan penjualan yang lebih personal untuk mempertahankan dan meningkatkan nilai mereka ke depannya.
+Daftar pelanggan dengan kontribusi penjualan tertinggi menunjukkan bahwa Sean Miller merupakan pelanggan paling bernilai, dengan total pembelian mencapai lebih dari USD 25.000. Diikuti oleh Tamara Chand dengan hampir USD 19.000 penjualan, serta beberapa nama lain seperti Raymond Buch, Tom Ashbrook, dan Adrian Barton, yang masing-masing menyumbang lebih dari USD 14.000. Pola ini menunjukkan bahwa terdapat kelompok pelanggan kunci dengan kontribusi besar terhadap pendapatan. Pelanggan-pelanggan ini bisa menjadi fokus program loyalitas, penawaran eksklusif, atau pendekatan penjualan yang lebih personal untuk mempertahankan dan meningkatkan nilai mereka ke depannya.
 
 
 6. **Shipping Analysis**  
 
-![Shipping Mode](https://drive.google.com/uc?export=view&id=1tq93F2tM-_4ECgMvshilpn4X1J_Zqv3D)
+![shipping](https://github.com/user-attachments/assets/36065b87-7160-4e33-9541-5eb67b6def6e)
 
->Grafik ini menunjukkan distribusi mode pengiriman yang digunakan pelanggan. Dari grafik tersebut, terlihat bahwa Standard Class merupakan metode pengiriman yang paling sering dipilih, dengan jumlah pengiriman mendekati 6.000 kali. Hal ini menunjukkan bahwa pelanggan cenderung memilih opsi pengiriman yang lebih ekonomis dan cukup andal. Second Class berada di urutan kedua, diikuti oleh First Class, sedangkan Same Day merupakan metode pengiriman yang paling jarang digunakan, kemungkinan karena biaya yang lebih tinggi atau keterbatasan layanan.
+Grafik ini menunjukkan distribusi mode pengiriman yang digunakan pelanggan. Dari grafik tersebut, terlihat bahwa Standard Class merupakan metode pengiriman yang paling sering dipilih, dengan jumlah pengiriman mendekati 6.000 kali. Hal ini menunjukkan bahwa pelanggan cenderung memilih opsi pengiriman yang lebih ekonomis dan cukup andal. Second Class berada di urutan kedua, diikuti oleh First Class, sedangkan Same Day merupakan metode pengiriman yang paling jarang digunakan, kemungkinan karena biaya yang lebih tinggi atau keterbatasan layanan.
 
-![Shipping Duration](https://drive.google.com/uc?export=view&id=1HdsU6u-GfbQ5kwhV3KV-h3RiwG5vhmoK)
+![duration_shpng](https://github.com/user-attachments/assets/3b62faf7-fd6f-4885-afd6-91db3ff92bcc)
 
->Sementara itu, grafik kedua menunjukkan rata-rata durasi pengiriman untuk setiap mode. Standard Class memiliki rata-rata waktu pengiriman terlama, yaitu sekitar 5 hari. Di sisi lain, Same Day konsisten dengan namanya, memberikan pengiriman dalam waktu kurang dari satu hari. First Class memiliki durasi rata-rata sekitar 2 hari, dan Second Class memerlukan waktu sekitar 3 hari. Pola ini menunjukkan trade-off yang jelas antara kecepatan dan popularitas: meskipun Standard Class memerlukan waktu lebih lama, ia tetap menjadi pilihan utama pelanggan, kemungkinan karena efisiensi biaya.
+Sementara itu, grafik kedua menunjukkan rata-rata durasi pengiriman untuk setiap mode. Standard Class memiliki rata-rata waktu pengiriman terlama, yaitu sekitar 5 hari. Di sisi lain, Same Day konsisten dengan namanya, memberikan pengiriman dalam waktu kurang dari satu hari. First Class memiliki durasi rata-rata sekitar 2 hari, dan Second Class memerlukan waktu sekitar 3 hari. Pola ini menunjukkan trade-off yang jelas antara kecepatan dan popularitas: meskipun Standard Class memerlukan waktu lebih lama, ia tetap menjadi pilihan utama pelanggan, kemungkinan karena efisiensi biaya.
 
 
 7. **Sales Trend Over Time** 
 
-![Daily Sales](https://drive.google.com/uc?export=view&id=1lPh4miPD4kXRpUNkKKq4_RHCR-O-VNnD)
+![hour](https://github.com/user-attachments/assets/19c83774-249d-4e3c-b24b-dca85ae30978)
 
->Daily Sales Trend
+Daily Sales Trend
 Penjualan harian dari tahun 2015 hingga 2018 menunjukkan fluktuasi tajam. Meskipun terdapat lonjakan pada periode tertentu seperti awal 2015, secara umum tren penjualan harian menunjukkan peningkatan. Ini menandakan pertumbuhan aktivitas bisnis yang dinamis dan kemungkinan dipengaruhi oleh faktor musiman atau promosi tertentu.
 
-![Monthly Sales](https://drive.google.com/uc?export=view&id=1X9r9pwK2wDp2-v2opQ2bokR1iYLowfa4)
+![month](https://github.com/user-attachments/assets/556ce0c9-645c-4994-b1a9-23f7f415188f)
 
->Monthly Sales Trend
+Monthly Sales Trend
 Penjualan bulanan tampak berfluktuasi namun menunjukkan tren kenaikan secara umum. Lonjakan signifikan sering kali terjadi menjelang akhir tahun, khususnya pada Desember, yang kemungkinan besar disebabkan oleh peningkatan belanja saat musim liburan atau adanya diskon/promosi akhir tahun.
 
-![Yearly Sales](https://drive.google.com/uc?export=view&id=1XyeL-nd6V_MaWrdI3wtlXY_nVhtzZm-r)
+![year](https://github.com/user-attachments/assets/0b8d0541-6592-49ff-bbca-5bece0ad06cf)
 
->Yearly Sales Trend
+Yearly Sales Trend
 Penjualan tahunan menunjukkan penurunan dari tahun 2015 ke 2016, namun meningkat tajam pada tahun 2017 dan mencapai puncaknya pada 2018 dengan nilai penjualan sekitar USD 720.000. Ini menunjukkan adanya pertumbuhan yang konsisten dalam performa penjualan tahunan selama tiga tahun terakhir.
 
 
 8. **Monthly Sales Pattern Year-to-Year** 
 
-![Monthly Sales by Year](https://drive.google.com/uc?export=view&id=18_yJD4prB9O-JRdz7AC33ai1o4puiw9B)
+![month_y2y](https://github.com/user-attachments/assets/6d1c1e35-87c4-483a-a87b-cd3becdbcd16)
 
->Grafik tersebut menunjukkan tren penjualan bulanan dari 2015 hingga 2018. Terlihat pola musiman yang konsisten, di mana penjualan cenderung rendah di awal tahun (Januari–Februari) dan meningkat tajam menjelang akhir tahun, khususnya di bulan November dan Desember. Lonjakan paling signifikan terjadi di November 2018, dengan penjualan mendekati 110.000. Dari tahun ke tahun, tren pertumbuhan penjualan terlihat jelas, terutama pada bulan-bulan puncak. 
+Grafik tersebut menunjukkan tren penjualan bulanan dari 2015 hingga 2018. Terlihat pola musiman yang konsisten, di mana penjualan cenderung rendah di awal tahun (Januari–Februari) dan meningkat tajam menjelang akhir tahun, khususnya di bulan November dan Desember. Lonjakan paling signifikan terjadi di November 2018, dengan penjualan mendekati 110.000. Dari tahun ke tahun, tren pertumbuhan penjualan terlihat jelas, terutama pada bulan-bulan puncak. 
 
 
 9. **Monthly Observation** 
 
-![Monthly Sales Observation](https://drive.google.com/uc?export=view&id=1xHyLw_lBpgcRZwVFEly03wP3PtydIXK0)
+![month_obsrv](https://github.com/user-attachments/assets/65dfcbd6-6191-45db-a122-bb24f41cc0be)
 
->Grafik tersebut menunjukkan total penjualan per bulan secara agregat. Terlihat bahwa penjualan mengalami peningkatan signifikan di bulan-bulan tertentu, terutama Maret, September, November, dan Desember. November menjadi bulan dengan penjualan tertinggi, mencapai hampir 350.000, disusul oleh Desember. Sebaliknya, bulan Februari mencatatkan penjualan terendah. Selain itu, garis tren menunjukkan fluktuasi yang cukup tajam antar bulan, mencerminkan dinamika permintaan konsumen yang kuat sepanjang tahun.
+Grafik tersebut menunjukkan total penjualan per bulan secara agregat. Terlihat bahwa penjualan mengalami peningkatan signifikan di bulan-bulan tertentu, terutama Maret, September, November, dan Desember. November menjadi bulan dengan penjualan tertinggi, mencapai hampir 350.000, disusul oleh Desember. Sebaliknya, bulan Februari mencatatkan penjualan terendah. Selain itu, garis tren menunjukkan fluktuasi yang cukup tajam antar bulan, mencerminkan dinamika permintaan konsumen yang kuat sepanjang tahun.
 
 
 10. **Numerical Feature Correlation** 
 
+![numeric_crelation](https://github.com/user-attachments/assets/96c610d8-61ca-444f-8005-e5b0ff75d302)
 
-![Fitur Numerik](https://drive.google.com/uc?export=view&id=1GmhH5aG2ZFEVmBhT50Kty3IHRcFFkBSv)  
-
->Hasil dari grafik heatmap menunjukkan tidak ada korelasi signifikan antar ketiganya, dengan nilai korelasi sangat rendah (dekat 0). Artinya, fitur-fitur ini cenderung independen satu sama lain dan tidak saling memengaruhi secara linier.
+Hasil dari grafik heatmap menunjukkan tidak ada korelasi signifikan antar ketiganya, dengan nilai korelasi sangat rendah (dekat 0). Artinya, fitur-fitur ini cenderung independen satu sama lain dan tidak saling memengaruhi secara linier.
 
 
 11. **Sales Distribution & Outlier detection** 
 
-![Outlier Penjualan](https://drive.google.com/uc?export=view&id=1WApnAQXopztIVXoC0gxiL_ae-UpL5IRJ)  
+![sales_outlier](https://github.com/user-attachments/assets/4f36a195-fa91-436e-8212-ad153332d524)
 
-![Distribusi Penjualan](https://drive.google.com/uc?export=view&id=1WApnAQXopztIVXoC0gxiL_ae-UpL5IRJ)  
+![sles_distri](https://github.com/user-attachments/assets/7025c5b6-e578-4c44-8e06-86c2395a55e8)
 
->Distribusi penjualan menunjukkan data yang skew ke kanan, di mana sebagian besar transaksi berada di kisaran rendah (sekitar 0–500), sementara hanya sedikit transaksi dengan nilai sangat tinggi yang menjadi outlier. Hal ini mengindikasikan ketidakseimbangan pada data penjualan.
+Distribusi penjualan menunjukkan data yang skew ke kanan, di mana sebagian besar transaksi berada di kisaran rendah (sekitar 0–500), sementara hanya sedikit transaksi dengan nilai sangat tinggi yang menjadi outlier. Hal ini mengindikasikan ketidakseimbangan pada data penjualan.
 
 
 ### Data Preparation
 
-**1. Transformasi Logaritma pada Penjualan**  
+**1. Cleaning Data** 
+Pada tahap ini, dilakukan beberapa proses untuk merapikan dan menyiapkan dataset sebelum dianalisis lebih lanjut. Pertama, perintah superstore.dropna(axis=0, inplace=True) digunakan untuk menghapus seluruh baris (axis=0) yang memiliki nilai kosong (missing values) di dalam dataset. Dengan menambahkan inplace=True, perubahan ini langsung diterapkan pada dataset tanpa perlu membuat salinan baru. Setelah itu, dilakukan pengecekan duplikasi data menggunakan superstore.duplicated().any(), yang bertujuan untuk memastikan apakah ada baris data yang sama persis. Jika hasilnya False, berarti tidak ada data duplikat; namun jika True, maka terdapat duplikasi yang perlu ditangani. Selanjutnya, kolom-kolom yang tidak relevan untuk analisis, yaitu Row ID, Order ID, Customer ID, dan Product ID, dihapus dari dataset menggunakan superstore.drop(columns=[...]). Penghapusan ini bertujuan untuk menyederhanakan dataset dan mengurangi kolom yang tidak berkontribusi langsung terhadap analisis bisnis. Terakhir, dataset yang sudah dibersihkan disalin ke dalam variabel baru superstore_raw menggunakan superstore.copy(). Hal ini bertujuan untuk menyimpan versi mentah dataset setelah cleaning, sehingga jika dibutuhkan, data asli yang sudah dibersihkan tetap tersedia tanpa harus mengulang proses dari awal.
+
+**2. Transformasi Logaritma pada Penjualan**  
 Variabel `Sales` ditransformasikan menggunakan logaritma natural dengan rumus `log(1 + x)`. Hal ini dilakukan karena distribusi penjualan sangat tidak normal dan condong ke kanan (right-skewed), serta mengandung banyak nilai ekstrem. Dengan transformasi log, distribusi data menjadi lebih mendekati normal, mengurangi pengaruh outlier, dan pada akhirnya membantu meningkatkan performa model prediksi.
 
-**2. Pembersihan Outlier**  
+**3. Pembersihan Outlier**  
 Outlier pada kolom penjualan diidentifikasi menggunakan metode Interquartile Range (IQR), dengan menghitung batas bawah dan atas, lalu menghapus data yang berada di luar rentang tersebut. Langkah ini penting untuk menghindari distorsi model akibat nilai-nilai ekstrem yang tidak representatif dan bisa menyebabkan overfitting atau generalisasi yang buruk.
 
-**3. Rekayasa Fitur (Feature Engineering)**  
+**4. Rekayasa Fitur (Feature Engineering)**  
 Dari kolom tanggal, dibuat fitur-fitur baru seperti durasi pengiriman (selisih hari antara order dan pengiriman), tahun, bulan, hari, hari dalam minggu, kuartal, serta indikator musim liburan. Fitur-fitur ini memungkinkan model menangkap pola temporal seperti musiman dan perilaku pembelian harian, serta mempertimbangkan pengaruh logistik terhadap penjualan.
 
-**4. Encoding Variabel Kategorikal**  
+**5. Encoding Variabel Kategorikal**  
 Untuk mempersiapkan data bagi algoritma tabular, variabel kategorikal seperti `Category`, `Sub-Category`, `Region`, `Segment`, dan `Ship Mode` dikonversi ke bentuk numerik menggunakan label encoding. Hal ini perlu dilakukan karena sebagian besar algoritma machine learning tidak dapat mengolah data dalam bentuk teks secara langsung.
 
-**5. Persiapan Data untuk Model LSTM**  
+**6. Persiapan Data untuk Model LSTM**  
 Untuk model LSTM, hanya fitur numerik dan waktu yang dipilih, kemudian dinormalisasi menggunakan MinMaxScaler. Data disusun ulang menjadi urutan jendela waktu (sequence) yang sesuai dengan kebutuhan model time series. Data kemudian dibagi ke dalam subset pelatihan, validasi, dan pengujian menjadi 70% : 15% : 15% agar model dapat belajar pola urut waktu dengan lebih efektif.
 
-**6. Persiapan Data untuk Model Tabular**  
+**7. Persiapan Data untuk Model Tabular**  
 Untuk model seperti Random Forest dan XGBoost, data disiapkan dengan menghapus kolom non-relevan seperti nama produk dan pelanggan, yang tidak memiliki pengaruh langsung terhadap target prediksi. Selanjutnya, data dibagi menjadi training, validation, dan testing set dengan pembagian sebesar 70% : 15% : 15% untuk menghindari data leakage dan memastikan hasil evaluasi model yang objektif dan andal.
 
 
@@ -231,7 +239,10 @@ $$ RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2} $$
 **4. R-squared (R²)**  
 R² mengukur proporsi variansi dari data target yang bisa dijelaskan oleh model. Nilai mendekati 1 menunjukkan bahwa model dapat menjelaskan variabilitas dengan baik.
 
-$$ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2} $$
+$$
+R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}
+$$
+
 
 ### Hasil evaluasi dari keempat model yang digunakan ditampilkan dalam tabel berikut:
 
@@ -271,7 +282,7 @@ Beberapa ide pengembangan yang dapat dilakukan ke depan:
 
 Berikut adalah visualisasi perbandingan antara nilai penjualan aktual dan hasil prediksi dari keempat model:
 
-![Prediksi vs Aktual - Rata-Rata Bulanan](https://drive.google.com/uc?export=view&id=1pW5w-phQ57bQvvHz4iZ6hiM2E4qfnk1_)
+![predict_month](https://github.com/user-attachments/assets/d43fde12-7d24-4420-828b-a030cbaf92a4)
 
 Visualisasi di atas menunjukkan bahwa prediksi dari **Random Forest, XGBoost, dan CatBoost** hampir mengikuti pola penjualan aktual, sedangkan prediksi **LSTM** terlihat cenderung flat dan kurang adaptif terhadap dinamika data historis.
 
