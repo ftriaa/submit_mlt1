@@ -222,24 +222,24 @@ LSTM adalah jenis Recurrent Neural Network (RNN) yang dirancang untuk mempelajar
 Untuk mengevaluasi performa model regresi dalam memprediksi nilai penjualan, digunakan empat metrik utama: **Mean Absolute Error (MAE)**, **Mean Squared Error (MSE)**, **Root Mean Squared Error (RMSE)**, dan **R-squared (R²)**. Pemilihan metrik-metrik ini merujuk pada praktik umum dalam evaluasi model regresi [Chai & Draxler (2014)][11], [Brownlee (2020)][12], dan disesuaikan dengan konteks data yang bersifat numerik kontinu.
 
 **1. Mean Absolute Error (MAE)**  
-MAE mengukur rata-rata selisih absolut antara nilai prediksi dan nilai aktual. Metrik ini memiliki kelebihan karena berada dalam satuan yang sama dengan target (penjualan) dan tidak terlalu terpengaruh oleh outlier.
+MAE menghitung rata-rata absolut selisih antara nilai sebenarnya (yi) dan nilai prediksi (fi). Berbeda dengan MSE/RMSE, MAE tidak mengkuadratkan error, sehingga lebih tahan terhadap outlier.
 
-$$ MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i| $$
+![rms_mae](https://github.com/user-attachments/assets/e3ac2949-b8f2-499b-bc0b-1abb440049d2)
 
 **2. Mean Squared Error (MSE)**  
-MSE menghitung rata-rata selisih kuadrat antara nilai aktual dan prediksi. Metrik ini digunakan ketika penalti terhadap error besar perlu diperbesar untuk meningkatkan sensitivitas model.
+MSE mengukur rata-rata dari kuadrat selisih antara nilai sebenarnya (Xi) dan nilai prediksi (xi). Semakin kecil nilai MSE, semakin baik model dalam melakukan prediksi. Semakin kecil nilai MSE, semakin baik prediksi model.
 
-$$ MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 $$
+![images (1)](https://github.com/user-attachments/assets/4996def7-bfc8-4a5a-b766-59a2bce99507)
 
 **3. Root Mean Squared Error (RMSE)**  
-RMSE adalah akar kuadrat dari MSE dan dikembalikan ke satuan asli dari target. Metrik ini mempertahankan interpretasi langsung dalam konteks bisnis.
+RMSE adalah akar kuadrat dari MSE, mengembalikan metrik ke satuan asli dari target (tidak dalam kuadrat). Ini membuat RMSE lebih mudah diinterpretasikan dalam konteks dunia nyata. Semakin kecil RMSE, semakin baik model dalam memprediksi nilai target.
 
-$$ RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2} $$
+![20190714113817886](https://github.com/user-attachments/assets/eafdcfee-3574-4b1d-a559-9f3748b71823)
 
 **4. R-squared (R²)**  
-R² mengukur proporsi variansi dari data target yang bisa dijelaskan oleh model. Nilai mendekati 1 menunjukkan bahwa model dapat menjelaskan variabilitas dengan baik.
+R² menunjukkan seberapa besar variasi data target yang bisa dijelaskan oleh model. Nilai R² mendekati 1 berarti model sangat baik dalam menjelaskan variansi data. Nilai mendekati 1 menunjukkan bahwa model dapat menjelaskan variabilitas dengan baik.
 
-$$ R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2} $$
+![images](https://github.com/user-attachments/assets/5774f291-c3a7-41de-9fb9-fe97e9ca4e72)
 
 
 ### Hasil evaluasi dari keempat model yang digunakan ditampilkan dalam tabel berikut:
