@@ -56,7 +56,11 @@ Dataset **Sales Forecasting** oleh **Rohit Sahoo** merupakan kumpulan data yang 
 
 ![Screenshot 2025-04-26 090810](https://github.com/user-attachments/assets/bda80630-a160-4061-aa08-cfdbab98a91d)
 
-Berdasarkan output df.info() yang ditampilkan, dataset ini memiliki 9.800 baris data dan terdiri dari 18 kolom. Setiap kolom menunjukkan berbagai informasi terkait transaksi, seperti Row ID, Order ID, Order Date, Ship Date, Customer ID, Product ID, hingga Sales. Hampir seluruh kolom memiliki data lengkap (non-null), kecuali kolom Postal Code yang memiliki sedikit missing value, yaitu sebanyak 11 data kosong dari total 9.800 entri. Tipe data dalam dataset ini terdiri dari tiga jenis: int64 untuk data numerik bulat (contohnya Row ID), float64 untuk data numerik desimal (contohnya Postal Code dan Sales), serta object untuk data bertipe teks atau kategori (seperti Customer Name, City, dan Product Name). Selain itu, ukuran memori yang digunakan oleh dataset ini adalah sekitar 1.3 MB. Setelah itu, dilakukan pengecekan duplikasi data menggunakan superstore.duplicated().any(), yang bertujuan untuk memastikan apakah ada baris data yang sama persis. Didapat hasilnya False, berarti tidak ada data duplikat.
+Berdasarkan output df.info() yang ditampilkan, dataset ini memiliki 9.800 baris data dan terdiri dari 18 kolom. Setiap kolom menunjukkan berbagai informasi terkait transaksi, seperti Row ID, Order ID, Order Date, Ship Date, Customer ID, Product ID, hingga Sales. Hampir seluruh kolom memiliki data lengkap (non-null), kecuali kolom Postal Code yang memiliki sedikit missing value, yaitu sebanyak 11 data kosong dari total 9.800 entri. Tipe data dalam dataset ini terdiri dari tiga jenis: int64 untuk data numerik bulat (contohnya Row ID), float64 untuk data numerik desimal (contohnya Postal Code dan Sales), serta object untuk data bertipe teks atau kategori (seperti Customer Name, City, dan Product Name). Selain itu, ukuran memori yang digunakan oleh dataset ini adalah sekitar 1.3 MB. 
+
+![Screenshot 2025-04-30 112054](https://github.com/user-attachments/assets/7b870724-80c5-45fd-b847-78dc56f5e690)
+
+Setelah itu, dilakukan pengecekan duplikasi data menggunakan superstore.duplicated().any(), yang bertujuan untuk memastikan apakah ada baris data yang sama persis. Didapat hasilnya False, berarti tidak ada data duplikat.
 
 
 ### Exploratory Data Analysis (EDA)
