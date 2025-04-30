@@ -224,22 +224,22 @@ Untuk mengevaluasi performa model regresi dalam memprediksi nilai penjualan, dig
 **1. Mean Absolute Error (MAE)**  
 MAE menghitung rata-rata absolut selisih antara nilai sebenarnya (yi) dan nilai prediksi (fi). Berbeda dengan MSE/RMSE, MAE tidak mengkuadratkan error, sehingga lebih tahan terhadap outlier.
 
-![rms_mae](https://github.com/user-attachments/assets/e3ac2949-b8f2-499b-bc0b-1abb440049d2)
+![rms_mae](https://github.com/user-attachments/assets/41ba4dff-4c7d-443c-a493-2254352b3285)
 
 **2. Mean Squared Error (MSE)**  
 MSE mengukur rata-rata dari kuadrat selisih antara nilai sebenarnya (Xi) dan nilai prediksi (xi). Semakin kecil nilai MSE, semakin baik model dalam melakukan prediksi. Semakin kecil nilai MSE, semakin baik prediksi model.
 
-![images (1)](https://github.com/user-attachments/assets/4996def7-bfc8-4a5a-b766-59a2bce99507)
+![images (1)](https://github.com/user-attachments/assets/e7afd59e-be2b-4844-8800-39290d80ea81)
 
 **3. Root Mean Squared Error (RMSE)**  
 RMSE adalah akar kuadrat dari MSE, mengembalikan metrik ke satuan asli dari target (tidak dalam kuadrat). Ini membuat RMSE lebih mudah diinterpretasikan dalam konteks dunia nyata. Semakin kecil RMSE, semakin baik model dalam memprediksi nilai target.
 
-![20190714113817886](https://github.com/user-attachments/assets/eafdcfee-3574-4b1d-a559-9f3748b71823)
+![20190714113817886](https://github.com/user-attachments/assets/27681863-5c72-4406-baa4-388e6847320a)
 
 **4. R-squared (R²)**  
 R² menunjukkan seberapa besar variasi data target yang bisa dijelaskan oleh model. Nilai R² mendekati 1 berarti model sangat baik dalam menjelaskan variansi data. Nilai mendekati 1 menunjukkan bahwa model dapat menjelaskan variabilitas dengan baik.
 
-![images](https://github.com/user-attachments/assets/5774f291-c3a7-41de-9fb9-fe97e9ca4e72)
+![images](https://github.com/user-attachments/assets/d6cbeace-fb51-4d22-a9da-f28e4348c8d9)
 
 
 ### Hasil evaluasi dari keempat model yang digunakan ditampilkan dalam tabel berikut:
