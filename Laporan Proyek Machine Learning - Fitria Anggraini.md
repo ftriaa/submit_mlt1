@@ -54,11 +54,11 @@ Dataset **Sales Forecasting** oleh **Rohit Sahoo** merupakan kumpulan data yang 
 - **Sales**: Total nilai penjualan produk (target peramalan).
 - **Postal Code**: Kode pos alamat pengiriman.
 
-![Screenshot 2025-04-26 090810](https://github.com/user-attachments/assets/bda80630-a160-4061-aa08-cfdbab98a91d)
+![Gambar Dataset](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/isi_dataset.png)
 
 Berdasarkan output df.info() yang ditampilkan, dataset ini memiliki 9.800 baris data dan terdiri dari 18 kolom. Setiap kolom menunjukkan berbagai informasi terkait transaksi, seperti Row ID, Order ID, Order Date, Ship Date, Customer ID, Product ID, hingga Sales. Hampir seluruh kolom memiliki data lengkap (non-null), kecuali kolom Postal Code yang memiliki sedikit missing value, yaitu sebanyak 11 data kosong dari total 9.800 entri. Tipe data dalam dataset ini terdiri dari tiga jenis: int64 untuk data numerik bulat (contohnya Row ID), float64 untuk data numerik desimal (contohnya Postal Code dan Sales), serta object untuk data bertipe teks atau kategori (seperti Customer Name, City, dan Product Name). Selain itu, ukuran memori yang digunakan oleh dataset ini adalah sekitar 1.3 MB. 
 
-![Screenshot 2025-04-30 112054](https://github.com/user-attachments/assets/7b870724-80c5-45fd-b847-78dc56f5e690)
+![cek_duplikat](https://github.com/user-attachments/assets/4e6fcac0-32bb-4744-815a-dba87d0017da)
 
 Setelah itu, dilakukan pengecekan duplikasi data menggunakan `superstore.duplicated().any()`, yang bertujuan untuk memastikan apakah ada baris data yang sama persis. Didapat hasilnya False, berarti tidak ada data duplikat.
 
@@ -82,8 +82,7 @@ Setelah itu, dilakukan pengecekan duplikasi data menggunakan `superstore.duplica
 
 2. **Sales Distribution Overview**
 
-![category](https://github.com/user-attachments/assets/bf471ebc-b0c1-4936-96d8-8e71a1b874fc)
-
+![category](https://github.com/user-attachments/assets/d88127a5-9c5d-4db1-a093-4a984e1d891f)
 
 Grafik pie ini menggambarkan distribusi penjualan berdasarkan kategori utama. Dari visualisasi terlihat bahwa kategori **Technology** memberikan kontribusi penjualan terbesar sebesar **36,7%**, diikuti oleh **Furniture** dengan **32,1%**, dan **Office Supplies** sebesar **31,2%**. Perbedaan antar kategori tidak terlalu mencolok, namun tetap terlihat bahwa produk-produk teknologi memiliki peran dominan dalam total penjualan. 
 
