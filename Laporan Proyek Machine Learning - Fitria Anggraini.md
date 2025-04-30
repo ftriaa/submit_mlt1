@@ -58,7 +58,7 @@ Dataset **Sales Forecasting** oleh **Rohit Sahoo** merupakan kumpulan data yang 
 
 Berdasarkan output df.info() yang ditampilkan, dataset ini memiliki 9.800 baris data dan terdiri dari 18 kolom. Setiap kolom menunjukkan berbagai informasi terkait transaksi, seperti Row ID, Order ID, Order Date, Ship Date, Customer ID, Product ID, hingga Sales. Hampir seluruh kolom memiliki data lengkap (non-null), kecuali kolom Postal Code yang memiliki sedikit missing value, yaitu sebanyak 11 data kosong dari total 9.800 entri. Tipe data dalam dataset ini terdiri dari tiga jenis: int64 untuk data numerik bulat (contohnya Row ID), float64 untuk data numerik desimal (contohnya Postal Code dan Sales), serta object untuk data bertipe teks atau kategori (seperti Customer Name, City, dan Product Name). Selain itu, ukuran memori yang digunakan oleh dataset ini adalah sekitar 1.3 MB. 
 
-![cek_duplikat](https://github.com/user-attachments/assets/4e6fcac0-32bb-4744-815a-dba87d0017da)
+![cek duplikat](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/cek_duplikat.png)
 
 Setelah itu, dilakukan pengecekan duplikasi data menggunakan `superstore.duplicated().any()`, yang bertujuan untuk memastikan apakah ada baris data yang sama persis. Didapat hasilnya False, berarti tidak ada data duplikat.
 
@@ -82,72 +82,72 @@ Setelah itu, dilakukan pengecekan duplikasi data menggunakan `superstore.duplica
 
 2. **Sales Distribution Overview**
 
-![category](https://github.com/user-attachments/assets/d88127a5-9c5d-4db1-a093-4a984e1d891f)
+![category](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/category.png)
 
 Grafik pie ini menggambarkan distribusi penjualan berdasarkan kategori utama. Dari visualisasi terlihat bahwa kategori **Technology** memberikan kontribusi penjualan terbesar sebesar **36,7%**, diikuti oleh **Furniture** dengan **32,1%**, dan **Office Supplies** sebesar **31,2%**. Perbedaan antar kategori tidak terlalu mencolok, namun tetap terlihat bahwa produk-produk teknologi memiliki peran dominan dalam total penjualan. 
 
-![sub_category](https://github.com/user-attachments/assets/6ef16baa-5f12-48e4-a9f7-73a2047e440d)
+![sub_category](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/sub_category.png)
 
 Grafik ini menampilkan sub-kategori dengan total penjualan tertinggi. Sub-kategori Phones mencatat penjualan sebesar USD 326.488, disusul oleh Chairs dengan USD 322.108. Sub-kategori lain seperti Storage, Tables, dan Binders mengikuti di posisi berikutnya. Mayoritas sub-kategori teratas berasal dari kategori Technology dan Furniture, yang konsisten dengan distribusi penjualan pada grafik pie sebelumnya.
 
-![product](https://github.com/user-attachments/assets/820f1994-7ebd-4452-80cf-ab1b0328dd06)
+![product](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/product.png)
 
 Grafik batang ini menampilkan 10 produk dengan total penjualan tertinggi secara individu. Produk dengan performa penjualan paling tinggi adalah Canon imageCLASS 2200 Advanced Copier, yang berhasil mencatatkan penjualan lebih dari 60.000 USD. Di bawahnya, terdapat sejumlah produk perkantoran lainnya seperti Binding Machines, Cisco Video System, dan HP Printers. 
 
 
 3. **Sales by Geography** 
 
-![region](https://github.com/user-attachments/assets/97e55194-b87b-4a53-a70f-ec5caa367335)
+![region](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/region.png)
 
 Analisis geografis terhadap total penjualan mengungkap bahwa wilayah West menyumbang porsi penjualan terbesar secara regional, yaitu sebesar 31.5%, diikuti oleh East dengan 29.3%. Wilayah Central dan South tertinggal dengan masing-masing 21.9% dan 17.3%.
 
-![state](https://github.com/user-attachments/assets/b2e8fa95-2c10-4761-8c62-baa69894bf57)
+![state](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/state.png)
 
 Jika dilihat lebih mendetail berdasarkan negara bagian, California mendominasi dengan kontribusi sebesar 28.6% dari total penjualan di antara 10 negara bagian teratas, disusul oleh New York (19.6%) dan Texas (10.8%).
 
-![city](https://github.com/user-attachments/assets/bd8cf3a0-8290-49e2-8ea9-fc0756bd8acb)
+![city](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/city.png)
 
 Sementara itu, pada tingkat kota, New York City memimpin dengan pangsa penjualan sebesar 25.1%, diikuti oleh Los Angeles (17.2%) dan Seattle (11.5%). Secara keseluruhan, pola ini menunjukkan bahwa penjualan paling kuat terkonsentrasi di wilayah pesisir seperti California dan New York, yang juga merupakan pusat ekonomi besar di Amerika Serikat.
 
 
 4. **Sales by Customer Segment** 
 
-![segment](https://github.com/user-attachments/assets/928a7349-fa9a-49b2-9723-f4f1ac79d2c1)
+![segment](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/segment.png)
 
 Distribusi penjualan berdasarkan segmen pelanggan menunjukkan bahwa segmen Consumer merupakan penyumbang terbesar dengan 50.9% dari total penjualan. Segmen Corporate berada di posisi kedua dengan kontribusi sebesar 30.3%, sementara Home Office menyumbang 18.8%. Temuan ini mengindikasikan bahwa pelanggan individu atau konsumen umum menjadi pasar utama dalam penjualan produk, diikuti oleh segmen bisnis besar dan kantor rumahan.
 
 
 5. **Top 10 Customers by Sales** 
 
-![customers](https://github.com/user-attachments/assets/6a14e384-3bd4-4597-8781-fecfbd7e404f)
+![customers](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/customers.png)
 
 Daftar pelanggan dengan kontribusi penjualan tertinggi menunjukkan bahwa Sean Miller merupakan pelanggan paling bernilai, dengan total pembelian mencapai lebih dari USD 25.000. Diikuti oleh Tamara Chand dengan hampir USD 19.000 penjualan, serta beberapa nama lain seperti Raymond Buch, Tom Ashbrook, dan Adrian Barton, yang masing-masing menyumbang lebih dari USD 14.000. Pola ini menunjukkan bahwa terdapat kelompok pelanggan kunci dengan kontribusi besar terhadap pendapatan. Pelanggan-pelanggan ini bisa menjadi fokus program loyalitas, penawaran eksklusif, atau pendekatan penjualan yang lebih personal untuk mempertahankan dan meningkatkan nilai mereka ke depannya.
 
 
 6. **Shipping Analysis**  
 
-![shipping](https://github.com/user-attachments/assets/36065b87-7160-4e33-9541-5eb67b6def6e)
+![shipping](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/shipping.png)
 
 Grafik ini menunjukkan distribusi mode pengiriman yang digunakan pelanggan. Dari grafik tersebut, terlihat bahwa Standard Class merupakan metode pengiriman yang paling sering dipilih, dengan jumlah pengiriman mendekati 6.000 kali. Hal ini menunjukkan bahwa pelanggan cenderung memilih opsi pengiriman yang lebih ekonomis dan cukup andal. Second Class berada di urutan kedua, diikuti oleh First Class, sedangkan Same Day merupakan metode pengiriman yang paling jarang digunakan, kemungkinan karena biaya yang lebih tinggi atau keterbatasan layanan.
 
-![duration_shpng](https://github.com/user-attachments/assets/3b62faf7-fd6f-4885-afd6-91db3ff92bcc)
+![duration_shpng](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/duration_shpng.png)
 
 Sementara itu, grafik kedua menunjukkan rata-rata durasi pengiriman untuk setiap mode. Standard Class memiliki rata-rata waktu pengiriman terlama, yaitu sekitar 5 hari. Di sisi lain, Same Day konsisten dengan namanya, memberikan pengiriman dalam waktu kurang dari satu hari. First Class memiliki durasi rata-rata sekitar 2 hari, dan Second Class memerlukan waktu sekitar 3 hari. Pola ini menunjukkan trade-off yang jelas antara kecepatan dan popularitas: meskipun Standard Class memerlukan waktu lebih lama, ia tetap menjadi pilihan utama pelanggan, kemungkinan karena efisiensi biaya.
 
 
 7. **Sales Trend Over Time** 
 
-![hour](https://github.com/user-attachments/assets/19c83774-249d-4e3c-b24b-dca85ae30978)
+![hour](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/hour.png)
 
 Daily Sales Trend
 Penjualan harian dari tahun 2015 hingga 2018 menunjukkan fluktuasi tajam. Meskipun terdapat lonjakan pada periode tertentu seperti awal 2015, secara umum tren penjualan harian menunjukkan peningkatan. Ini menandakan pertumbuhan aktivitas bisnis yang dinamis dan kemungkinan dipengaruhi oleh faktor musiman atau promosi tertentu.
 
-![month](https://github.com/user-attachments/assets/556ce0c9-645c-4994-b1a9-23f7f415188f)
+![month](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/month.png)
 
 Monthly Sales Trend
 Penjualan bulanan tampak berfluktuasi namun menunjukkan tren kenaikan secara umum. Lonjakan signifikan sering kali terjadi menjelang akhir tahun, khususnya pada Desember, yang kemungkinan besar disebabkan oleh peningkatan belanja saat musim liburan atau adanya diskon/promosi akhir tahun.
 
-![year](https://github.com/user-attachments/assets/0b8d0541-6592-49ff-bbca-5bece0ad06cf)
+![year](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/year.png)
 
 Yearly Sales Trend
 Penjualan tahunan menunjukkan penurunan dari tahun 2015 ke 2016, namun meningkat tajam pada tahun 2017 dan mencapai puncaknya pada 2018 dengan nilai penjualan sekitar USD 720.000. Ini menunjukkan adanya pertumbuhan yang konsisten dalam performa penjualan tahunan selama tiga tahun terakhir.
@@ -155,30 +155,30 @@ Penjualan tahunan menunjukkan penurunan dari tahun 2015 ke 2016, namun meningkat
 
 8. **Monthly Sales Pattern Year-to-Year** 
 
-![month_y2y](https://github.com/user-attachments/assets/6d1c1e35-87c4-483a-a87b-cd3becdbcd16)
+![month_y2y](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/month_y2y.png)
 
 Grafik tersebut menunjukkan tren penjualan bulanan dari 2015 hingga 2018. Terlihat pola musiman yang konsisten, di mana penjualan cenderung rendah di awal tahun (Januari–Februari) dan meningkat tajam menjelang akhir tahun, khususnya di bulan November dan Desember. Lonjakan paling signifikan terjadi di November 2018, dengan penjualan mendekati 110.000. Dari tahun ke tahun, tren pertumbuhan penjualan terlihat jelas, terutama pada bulan-bulan puncak. 
 
 
 9. **Monthly Observation** 
 
-![month_obsrv](https://github.com/user-attachments/assets/65dfcbd6-6191-45db-a122-bb24f41cc0be)
+![month_obsrv](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/month_obsrv.png)
 
 Grafik tersebut menunjukkan total penjualan per bulan secara agregat. Terlihat bahwa penjualan mengalami peningkatan signifikan di bulan-bulan tertentu, terutama Maret, September, November, dan Desember. November menjadi bulan dengan penjualan tertinggi, mencapai hampir 350.000, disusul oleh Desember. Sebaliknya, bulan Februari mencatatkan penjualan terendah. Selain itu, garis tren menunjukkan fluktuasi yang cukup tajam antar bulan, mencerminkan dinamika permintaan konsumen yang kuat sepanjang tahun.
 
 
 10. **Numerical Feature Correlation** 
 
-![numeric_crelation](https://github.com/user-attachments/assets/96c610d8-61ca-444f-8005-e5b0ff75d302)
+![numeric_crelation](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/numeric_crelation.png)
 
 Hasil dari grafik heatmap menunjukkan tidak ada korelasi signifikan antar ketiganya, dengan nilai korelasi sangat rendah (dekat 0). Artinya, fitur-fitur ini cenderung independen satu sama lain dan tidak saling memengaruhi secara linier.
 
 
 11. **Sales Distribution & Outlier detection** 
 
-![sales_outlier](https://github.com/user-attachments/assets/4f36a195-fa91-436e-8212-ad153332d524)
+![sales_outlier](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/sales_outlier.png)
 
-![sles_distri](https://github.com/user-attachments/assets/7025c5b6-e578-4c44-8e06-86c2395a55e8)
+![sles_distri](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/sles_distri.png)
 
 Distribusi penjualan menunjukkan data yang skew ke kanan, di mana sebagian besar transaksi berada di kisaran rendah (sekitar 0–500), sementara hanya sedikit transaksi dengan nilai sangat tinggi yang menjadi outlier. Hal ini mengindikasikan ketidakseimbangan pada data penjualan.
 
@@ -231,22 +231,22 @@ Untuk mengevaluasi performa model regresi dalam memprediksi nilai penjualan, dig
 **1. Mean Absolute Error (MAE)**  
 MAE menghitung rata-rata absolut selisih antara nilai sebenarnya (yi) dan nilai prediksi (fi). Berbeda dengan MSE/RMSE, MAE tidak mengkuadratkan error, sehingga lebih tahan terhadap outlier.
 
-![rms_mae](https://github.com/user-attachments/assets/41ba4dff-4c7d-443c-a493-2254352b3285)
+![rms_mae](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/rms_mae.png)
 
 **2. Mean Squared Error (MSE)**  
 MSE mengukur rata-rata dari kuadrat selisih antara nilai sebenarnya (Xi) dan nilai prediksi (xi). Semakin kecil nilai MSE, semakin baik model dalam melakukan prediksi. Semakin kecil nilai MSE, semakin baik prediksi model.
 
-![images (1)](https://github.com/user-attachments/assets/e7afd59e-be2b-4844-8800-39290d80ea81)
+![mse2](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/mse2.png)
 
 **3. Root Mean Squared Error (RMSE)**  
 RMSE adalah akar kuadrat dari MSE, mengembalikan metrik ke satuan asli dari target (tidak dalam kuadrat). Ini membuat RMSE lebih mudah diinterpretasikan dalam konteks dunia nyata. Semakin kecil RMSE, semakin baik model dalam memprediksi nilai target.
 
-![20190714113817886](https://github.com/user-attachments/assets/27681863-5c72-4406-baa4-388e6847320a)
+![rmse1](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/rmse1.png)
 
 **4. R-squared (R²)**  
 R² menunjukkan seberapa besar variasi data target yang bisa dijelaskan oleh model. Nilai R² mendekati 1 berarti model sangat baik dalam menjelaskan variansi data. Nilai mendekati 1 menunjukkan bahwa model dapat menjelaskan variabilitas dengan baik.
 
-![images](https://github.com/user-attachments/assets/d6cbeace-fb51-4d22-a9da-f28e4348c8d9)
+![images](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/images.png)
 
 
 ### Hasil evaluasi dari keempat model yang digunakan ditampilkan dalam tabel berikut:
@@ -287,7 +287,7 @@ Beberapa ide pengembangan yang dapat dilakukan ke depan:
 
 Berikut adalah visualisasi perbandingan antara nilai penjualan aktual dan hasil prediksi dari keempat model:
 
-![predict_month](https://github.com/user-attachments/assets/d43fde12-7d24-4420-828b-a030cbaf92a4)
+![predict_month](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/predict_month.png)
 
 Visualisasi di atas menunjukkan bahwa prediksi dari **Random Forest, XGBoost, dan CatBoost** hampir mengikuti pola penjualan aktual, sedangkan prediksi **LSTM** terlihat cenderung flat dan kurang adaptif terhadap dinamika data historis.
 
