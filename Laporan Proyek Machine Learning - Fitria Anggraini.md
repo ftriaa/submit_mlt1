@@ -42,10 +42,14 @@ Dataset **Sales Forecasting** oleh **Rohit Sahoo** merupakan kumpulan data yang 
 - **Ship Mode**: Metode pengiriman produk.
 - **Customer ID**: ID pelanggan yang melakukan pembelian.
 - **Customer Name**: Nama pelanggan.
-- **Segment**: Segmen pelanggan.
-- **Country/City/State/Region**: Lokasi pelanggan.
+- **Segment**: Kategori atau segmen pelanggan berdasarkan tipe pasar, seperti Consumer, Corporate, atau Home Office.
+- **Country**: Negara tempat pelanggan tinggal atau tempat pengiriman dilakukan.
+- **City**: Kota tempat pelanggan berada atau tujuan pengiriman.
+- **State**: Negara bagian atau provinsi dari alamat pelanggan.
+- **Region**: Wilayah geografis yang lebih luas, seperti West, East, Central, atau South.
 - **Product ID**: ID produk yang dibeli.
-- **Category/Sub-Category**: Kategori produk.
+- **Category**: Kategori utama produk, seperti Furniture, Office Supplies, atau Technology.
+- **Sub-Category**: Subkategori dari produk, seperti Chairs, Binders, Phones, dll.
 - **Product Name**: Nama produk.
 - **Sales**: Total nilai penjualan produk (target peramalan).
 - **Postal Code**: Kode pos alamat pengiriman.
