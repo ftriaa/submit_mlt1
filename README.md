@@ -8,6 +8,7 @@ Salah satu tantangan utama yang dihadapi adalah tingginya angka attrition rate, 
 
 ### Permasalahan Bisnis
 
+Departemen HR menghadapi tantangan tingginya tingkat attrition. Berikut pertanyaan utama yang ingin dijawab dalam proyek ini:
 1. Faktor-faktor apa saja yang berkontribusi terhadap tingginya tingkat attrition di perusahaan?
 2. Bagaimana cara mengidentifikasi karyawan yang berisiko tinggi untuk resign?
 3. Bagaimana menyajikan hasil analisis ini agar mudah dipahami dan dimanfaatkan oleh tim HR?
@@ -97,7 +98,7 @@ Install semua requirements
 
 ![Dashboard](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/Dashboard.png)
 
-Dashboard ini dibangun menggunakan Tableau dan terdiri dari beberapa bagian utama, termasuk ringkasan metrik karyawan, visualisasi berdasarkan atribut personal dan pekerjaan, serta filter interaktif. Dshboard ini dapat dikses melalui link berikut https://public.tableau.com/views/EmployeeAttritionDashboard_17467257157100/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link 
+Dashboard ini dibangun menggunakan Tableau dan terdiri dari beberapa bagian utama, termasuk ringkasan metrik karyawan, visualisasi berdasarkan atribut personal dan pekerjaan, serta filter interaktif. Dashboard ini dapat dikses melalui link berikut https://public.tableau.com/views/EmployeeAttritionDashboard_17467257157100/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link 
 
 Di bagian atas dashboard, terdapat metrik kunci seperti total karyawan (1.058 orang), jumlah karyawan yang mengundurkan diri (179 orang), dan tingkat attrition sebesar 16.92%. Visualisasi selanjutnya menunjukkan bahwa karyawan yang sering lembur (OverTime = Yes) memiliki tingkat attrition yang jauh lebih tinggi dibandingkan yang tidak lembur. Selain itu, pie chart attrition status menggambarkan proporsi karyawan yang keluar dan yang tetap bekerja.
 
