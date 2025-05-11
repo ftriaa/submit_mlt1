@@ -40,65 +40,40 @@ Menyusun temuan utama dari hasil analisis serta memberikan saran strategis yang 
 
 ### Persiapan
 
-Sumber data: Dataset yang digunakan ialah [Dataset Jaya Jaya Maju](https://github.com/dicodingacademy/dicoding_dataset/blob/main/employee/employee_data.csv) yang berisi data karyawan perusahaan. Dataset awal memiliki 1.470 baris, namun setelah melalui proses pembersihan data (data cleaning), jumlah baris yang digunakan menjadi 1.058 baris yang bersih dan siap untuk dianalisis. Dataset ini terdiri dari 35 kolom, yang mencakup berbagai informasi mengenai karyawan. Berikut adalah penjelasan tentang kolom-kolom yang terdapat dalam dataset:
-1. **EmployeeId**: ID unik untuk setiap karyawan yang digunakan untuk identifikasi.
-2. **Age**: Usia karyawan yang digunakan untuk analisis kelompok usia.
-3. **Attrition**: Status pengunduran diri karyawan (1 untuk resign, 0 untuk tetap bekerja).
-4. **BusinessTravel**: Frekuensi perjalanan bisnis karyawan (Travel\_Frequently, Travel\_Rarely, Non-Travel).
-5. **DailyRate**: Pembayaran harian yang diterima karyawan.
-6. **Department**: Departemen tempat karyawan bekerja (misalnya, Human Resources, Research & Development).
-7. **DistanceFromHome**: Jarak (km) dari tempat tinggal karyawan ke kantor.
-8. **Education**: Tingkat pendidikan karyawan.
-9. **EducationField**: Bidang pendidikan yang ditekuni karyawan (misalnya, Medical, Other, Life Sciences).
-10. **EmployeeCount**: Jumlah karyawan di perusahaan (biasanya bernilai 1).
-11. **EnvironmentSatisfaction**: Tingkat kepuasan terhadap lingkungan kerja (skor 1-4).
-12. **Gender**: Jenis kelamin karyawan (Male, Female).
-13. **HourlyRate**: Upah per jam yang diterima karyawan.
-14. **JobInvolvement**: Tingkat keterlibatan karyawan dalam pekerjaannya (skor 1-4).
-15. **JobLevel**: Tingkat posisi pekerjaan karyawan dalam organisasi.
-16. **JobRole**: Peran pekerjaan yang dijalankan oleh karyawan (misalnya, Healthcare Representative, Research Scientist).
-17. **JobSatisfaction**: Tingkat kepuasan kerja karyawan (skor 1-4).
-18. **MaritalStatus**: Status pernikahan karyawan (Married, Single, Divorced).
-19. **MonthlyIncome**: Gaji bulanan yang diterima karyawan.
-20. **MonthlyRate**: Pembayaran yang diterima setiap bulan oleh karyawan.
-21. **NumCompaniesWorked**: Jumlah perusahaan tempat karyawan pernah bekerja sebelumnya.
-22. **Over18**: Menandakan apakah karyawan berusia lebih dari 18 tahun (Y = Ya, N = Tidak).
-23. **OverTime**: Status lembur karyawan (Yes = Lembur, No = Tidak).
-24. **PercentSalaryHike**: Persentase kenaikan gaji yang diterima karyawan.
-25. **PerformanceRating**: Penilaian kinerja karyawan (skor 1-5).
-26. **RelationshipSatisfaction**: Kepuasan hubungan kerja dengan rekan-rekan (skor 1-4).
-27. **StandardHours**: Jumlah jam kerja standar per minggu (biasanya 80).
-28. **StockOptionLevel**: Level opsi saham yang diberikan (0 = tidak ada, 1 = rendah, 2 = sedang, 3 = tinggi).
-29. **TotalWorkingYears**: Total tahun pengalaman kerja karyawan.
-30. **TrainingTimesLastYear**: Jumlah pelatihan yang diikuti karyawan pada tahun sebelumnya.
-31. **WorkLifeBalance**: Tingkat keseimbangan kehidupan kerja karyawan (skor 1-4).
-32. **YearsAtCompany**: Jumlah tahun karyawan telah bekerja di perusahaan.
-33. **YearsInCurrentRole**: Jumlah tahun karyawan telah bekerja dalam posisi saat ini.
-34. **YearsSinceLastPromotion**: Jumlah tahun sejak karyawan terakhir kali dipromosikan.
-35. **YearsWithCurrManager**: Jumlah tahun karyawan telah bekerja dengan manajer saat ini.
-
+Sumber data: Dataset yang digunakan ialah <a href="https://github.com/dicodingacademy/dicoding_dataset/blob/main/employee/employee_data.csv?raw=true">Dataset Jaya Jaya Maju</a> dari Dicoding. Dataset ini berisi informasi tentang karyawan perusahaan yang mencakup berbagai atribut yang dapat digunakan untuk analisis lebih lanjut.
 
 Setup environment:
 
-Menyimpan dan Memuat Model Terbaik untuk digunakan kembali pada prediksi mendatang
+Agar dapat menjalankan project ini dengan baik, ikuti langkah-langkah berikut untuk mengatur environment dan menginstall dependency.
+
+1. Membuat Lingkungan Kerja dengan Anaconda
+```
+conda create --name Proyek-ds python=3.11.7
+conda activate Proyek-ds
+pip install -r requirements.txt
+```
+2. Menyimpan dan Memuat Model Terbaik untuk digunakan kembali pada prediksi mendatang
 ```
 import joblib
+import os
+
+# Buat folder model
+os.makedirs('model', exist_ok=True)
 
 # Simpan model dan preprocessor
-joblib.dump(model, 'model/nama_model.pkl')
+joblib.dump(xgb_model, 'model/xgboost_model.pkl')
 joblib.dump(preprocessor, 'model/preprocessor.pkl')
 ```
-
-Install semua requirements
+3. Menjalankan Prediksi
 ```
-!pip freeze > requirements.txt
+streamlit run prediction.py
 ```
 
 ## Business Dashboard
 
 ![Dashboard](https://raw.githubusercontent.com/ftriaa/submit_mlt1/main/asset/Dashboard.png)
 
-Dashboard ini dibangun menggunakan Tableau dan terdiri dari beberapa bagian utama, termasuk ringkasan metrik karyawan, visualisasi berdasarkan atribut personal dan pekerjaan, serta filter interaktif. Dashboard ini dapat dikses melalui link berikut https://public.tableau.com/views/EmployeeAttritionDashboard_17467257157100/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link 
+Dashboard ini dibangun menggunakan Tableau dan terdiri dari beberapa bagian utama, termasuk ringkasan metrik karyawan, visualisasi berdasarkan atribut personal dan pekerjaan, serta filter interaktif. Dashboard ini dapat dikses melalui <a href="https://public.tableau.com/views/EmployeeAttritionDashboard_17467257157100/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link">link berikut ini</a>.
 
 Di bagian atas dashboard, terdapat metrik kunci seperti total karyawan (1.058 orang), jumlah karyawan yang mengundurkan diri (179 orang), dan tingkat attrition sebesar 16.92%. Visualisasi selanjutnya menunjukkan bahwa karyawan yang sering lembur (OverTime = Yes) memiliki tingkat attrition yang jauh lebih tinggi dibandingkan yang tidak lembur. Selain itu, pie chart attrition status menggambarkan proporsi karyawan yang keluar dan yang tetap bekerja.
 
@@ -151,7 +126,7 @@ i. Total Working Years
 Karyawan dengan pengalaman kerja kurang dari 5 tahun lebih sering berpindah pekerjaan dibandingkan mereka yang lebih senior dan cenderung stabil.
 
 
-### Rekomendasi Action Items (Optional)
+## Rekomendasi Action Items
 
 Untuk mengurangi angka attrition, perusahaan Jaya Jaya Maju disarankan melakukan:
 
