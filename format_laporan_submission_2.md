@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Perkembangan teknologi digital telah membawa perubahan signifikan dalam dunia literasi dan industri buku. Akses terhadap informasi dan koleksi buku kini semakin mudah melalui platform digital, sehingga jumlah pilihan yang tersedia bagi pembaca meningkat secara drastis. Namun, melimpahnya pilihan ini menimbulkan tantangan berupa information overload, yaitu kondisi di mana pembaca kesulitan menyaring informasi atau buku yang sesuai. Fenomena ini tidak hanya memengaruhi masyarakat umum, tetapi juga mengubah perilaku pencarian informasi secara luas. Menurut Hariyati & Heriyanto (2021), ledakan informasi di era digital ini tidak hanya memengaruhi masyarakat umum, tetapi juga mengubah perilaku pencarian informasi secara luas, sehingga dibutuhkan upaya khusus untuk membantu pengguna menemukan informasi yang relevan.
+Perkembangan teknologi digital telah membawa perubahan signifikan dalam dunia literasi dan industri buku. Akses terhadap informasi dan koleksi buku kini semakin mudah melalui platform digital, sehingga jumlah pilihan yang tersedia bagi pembaca meningkat secara drastis. Namun, melimpahnya pilihan ini menimbulkan tantangan berupa information overload, yaitu kondisi di mana pembaca kesulitan menyaring informasi atau buku yang sesuai. Menurut Hariyati & Heriyanto (2021), fenomena ini turut mengubah perilaku pencarian informasi secara luas dan tidak hanya memengaruhi masyarakat umum, tetapi juga ekosistem literasi secara keseluruhan.
 
 Permasalahan information overload ini dirasakan oleh berbagai pihak dalam ekosistem literasi digital. Bagi pembaca, banyaknya pilihan sering kali menyulitkan mereka dalam menemukan buku yang sesuai dengan minat, kebutuhan, atau preferensi pribadi. Proses pencarian buku yang relevan secara manual menjadi tidak efisien, membingungkan, dan dapat menurunkan minat membaca, terutama bagi pengguna yang tidak memiliki referensi khusus atau waktu yang cukup untuk menelusuri seluruh katalog buku (Alkaff dkk., 2020). Di sisi lain, pengelola perpustakaan, penulis, dan penerbit juga menghadapi tantangan dalam memastikan karya mereka dapat menjangkau audiens yang tepat dan meningkatkan sirkulasi buku (Tian dkk., 2019). Salah satu pihak yang terdampak secara langsung oleh ledakan informasi ini adalah pustakawan. Tuntutan peran pustakawan kini semakin kompleks, tidak hanya sebagai pengelola koleksi, tetapi juga sebagai fasilitator dalam membantu pengguna menemukan informasi valid di tengah banjir data (Hariyati & Heriyanto, 2021).
 
@@ -14,7 +14,7 @@ Berdasarkan urgensi dan manfaat yang ditawarkan, pengembangan sistem rekomendasi
 
 ## Business Understanding
 
-Sistem rekomendasi buku bertujuan membantu pengguna menemukan bacaan yang sesuai dengan minat dan preferensi mereka. Dalam proyek ini, sistem dirancang untuk memanfaatkan informasi dari konten buku dan interaksi pengguna sebelumnya guna menghasilkan rekomendasi yang relevan dan personal.
+Untuk menjawab tantangan information overload dalam dunia literasi digital, sistem rekomendasi buku dirancang guna membantu pengguna menemukan bacaan yang sesuai dengan minat dan preferensi mereka. Sistem ini memanfaatkan informasi dari konten buku serta interaksi pengguna sebelumnya agar dapat memberikan rekomendasi yang relevan, personal, dan efisien.
 
 ### Problem Statements
 
@@ -24,7 +24,7 @@ Sistem rekomendasi buku bertujuan membantu pengguna menemukan bacaan yang sesuai
 
 ### Goals
 
-- Mengembangkan sistem rekomendasi buku yang mampu memberikan saran secara personal untuk setiap pengguna berdasarkan histori interaksi atau kemiripan konten.
+- Mengembangkan sistem rekomendasi buku yang mampu memberikan saran secara personal berdasarkan histori interaksi dan kemiripan konten.
 - Membangun dan membandingkan dua pendekatan sistem rekomendasi:
   * Content-Based Filtering (CBF) untuk memberikan rekomendasi berdasarkan kemiripan konten buku.
   * Collaborative Filtering (CF), khususnya pendekatan Neural Collaborative Filtering (NCF), untuk merekomendasikan buku berdasarkan pola interaksi pengguna.
@@ -34,7 +34,7 @@ Sistem rekomendasi buku bertujuan membantu pengguna menemukan bacaan yang sesuai
 
 Untuk mencapai tujuan di atas, proyek ini mengimplementasikan dua pendekatan utama:
 - Content-Based Filtering, memanfaatkan informasi konten buku seperti judul, penulis, dan penerbit. Data tersebut direpresentasikan menggunakan teknik TF-IDF Vectorization untuk mengekstrak fitur penting dari teks. Selanjutnya, kemiripan antar buku dihitung menggunakan metode cosine similarity, lalu digunakan model K-Nearest Neighbors (KNN) untuk mencari buku yang mirip dengan buku yang pernah disukai pengguna. Dengan pendekatan ini, sistem dapat memberikan rekomendasi berdasarkan kemiripan karakteristik buku yang pernah dinilai oleh pengguna.
-- Collaborative Filtering berbasis deep learning dengan metode Neural Collaborative Filtering (NCF). Pendekatan ini tidak melihat isi buku, melainkan berfokus pada pola interaksi antara pengguna dan buku melalui data rating. Dengan menggunakan embedding layer untuk merepresentasikan user dan item, model ini mampu belajar dari hubungan kompleks antar pengguna dan item melalui jaringan saraf. Hasilnya adalah sistem yang dapat memprediksi kemungkinan ketertarikan seorang pengguna terhadap buku tertentu, bahkan jika buku tersebut belum pernah diulas oleh pengguna serupa. 
+- Collaborative Filtering berbasis deep learning dengan metode Neural Collaborative Filtering (NCF). Pendekatan ini tidak melihat isi buku, melainkan berfokus pada pola interaksi antara pengguna dan buku melalui data rating. Model ini menggunakan embedding layer untuk merepresentasikan pengguna dan item. Melalui jaringan saraf, sistem dapat mempelajari hubungan kompleks di antara keduanya. Hasilnya adalah sistem yang dapat memprediksi kemungkinan ketertarikan seorang pengguna terhadap buku tertentu, bahkan jika buku tersebut belum pernah diulas oleh pengguna serupa. 
 
 ## Data Understanding
 
@@ -55,7 +55,7 @@ Dataset ini berisi metadata dari buku-buku yang tersedia dalam sistem.
 | `Image-URL-L` | 271357 | object | URL gambar ukuran besar. |
 
 Berikut adalah kondisi data pada file Books.csv:
-- Kolom `Image-URL-S`, `Image-URL-M`, dan `Image-URL-L` dihapus karena tidak dibutuhkan dalam proses pemodelan.
+- Kolom `Image-URL-S`, `Image-URL-M`, dan `Image-URL-L` tidak disertakan dalam proses pemodelan karena tidak memiliki kontribusi terhadap rekomendasi, serta tidak relevan untuk pendekatan berbasis konten maupun interaksi pengguna.
 - Terdapat dua nilai kosong pada kolom `Book-Author` dan `Publisher`, sehingga kedua baris tersebut dihapus dari dataset.
 - Kolom `Year-Of-Publication` awalnya bertipe tidak konsisten, sehingga dikonversi ke numerik dan difilter hanya tahun antara 1950–2025.
 
@@ -86,6 +86,39 @@ Berikut adalah kondisi data pada file Users.csv:
 - Nilai usia yang tidak berada dalam rentang 5–100 dihapus untuk menjaga kualitas data.
 
 ### Exploratory Data Analysis (EDA)
+
+Dataset **ratings** digabungkan dengan data **books** menggunakan kolom `ISBN`, lalu dilanjutkan dengan penggabungan ke data **users** menggunakan `User-ID`. Proses ini bertujuan agar seluruh informasi pengguna, buku, dan rating dapat dianalisis secara menyeluruh dalam satu tabel yang terintegrasi. Dilakukan juga pemilihan kolom-kolom yang relevan untuk kebutuhan dua jenis model yang akan dibangun. Kolom seperti `Book-Title`, `Book-Author`, `Publisher`, `Year-Of-Publication`, `User-ID`, `Book-Rating`, `Location`, dan `Age` dipertahankan karena memiliki nilai informasi penting dalam membangun sistem rekomendasi.
+
+EDA dilanjutkan dengan menganalisis karakteristik data seperti jumlah total interaksi (baris data), jumlah buku unik, penulis unik, pengguna unik, serta variasi lokasi pengguna. Rentang tahun terbit buku dan jumlah data dengan tahun tidak valid juga dievaluasi. Didapat hasilnya sebagai berikut:
+
+```
+Jumlah total interaksi (baris data): 1149780
+Jumlah buku unik: 241071
+Jumlah pengguna unik: 105283
+Jumlah penulis unik: 101587
+Jumlah lokasi pengguna unik: 26111
+Rentang tahun terbit buku: 0 - 2050
+Jumlah data dengan tahun terbit tidak valid: 118648
+``` 
+
+
+Pemeriksaan jumlah nilai kosong per kolom dilakukan untuk mengidentifikasi potensi perbaikan data. Didapat hasil seperti berikut:
+
+| Kolom              | Missing Values |
+|--------------------|----------------|
+| ISBN               | 0              |
+| Book-Title         | 118644         |
+| Book-Author        | 118646         |
+| Year-Of-Publication| 118648         |
+| Publisher          | 118646         |
+| User-ID            | 0              |
+| Book-Rating        | 0              |
+| Location           | 0              |
+| Age                | 309492         |
+
+Kolom **Book-Title**, **Book-Author**, **Publisher**, dan **Year-Of-Publication** memiliki lebih dari 118.000 missing values, menunjukkan banyak data buku yang tidak lengkap. Kolom **Age** memiliki 309.492 missing values, hampir separuh data, sehingga tidak bisa diandalkan tanpa imputasi.
+
+Berikutnya dilakukan pengecekan data duplikat dengan `book_data.duplicated().sum()`, didapat hasilnya `np.int64(0)`, yang berarti tidak ada data duplikat dalam dataset.
 
 
 
